@@ -1,0 +1,109 @@
+@use "./abstracts/" as *;
+@use "./base/" as *;
+@use "./components/" as *;
+@use "./layout/" as *;
+@use "./utilities/" as *;
+
+body {
+    --padding-inline-card: clamp(1.5rem, 5svw + 0.75rem, 3rem);
+    --transition-duration: 0.5s;
+
+    background-image: url("../../assets/images/background-pattern-mobile.svg");
+    background-repeat: no-repeat;
+    background-size: contain;
+
+    @include min-query("s") {
+        background-image: url("../../assets/images/background-pattern-desktop.svg");
+    }
+}
+
+.card {
+    --flex-gap: 1.5rem;
+
+    padding-inline: var(--padding-inline-card);
+}
+
+.main-heading {
+    @include flex(null, null, center, var(--flex-gap));
+
+    margin-block: clamp(1.5rem, 5svw + 0.75rem, 3rem);
+    font: {
+        weight: var(--fw-heading);
+        size: var(--fs-heading);
+    }
+    color: hsl(var(--c-heading));
+
+    &::before {
+        content: "";
+        width: 40px;
+        height: 41px;
+        background-image: url("../../assets/images/icon-star.svg");
+        background-repeat: no-repeat;
+    }
+}
+
+.accordion__item {
+    --block-spacing: 2rem;
+    --divider: 1px solid hsl(var(--c-divider));
+
+    padding-top: var(--block-spacing);  
+    margin-bottom: var(--block-spacing);
+
+    &:first-child {
+        padding-top: 0;
+    }
+
+    &:not(:first-child) {
+        border-top: var(--divider);
+    }
+
+    &.active {
+        .question {
+            &::after {
+                background-image: url("../../assets/images/icon-minus.svg");
+            }            
+        }
+
+        .answer__wrapper {
+            grid-template-rows: 1fr;
+            margin-top: var(--block-spacing);
+            opacity: 1;
+        }
+    }
+}
+
+.question {
+    @include flex(null, space-between, center, var(--flex-gap));
+
+    font: {
+        weight: var(--fw-question);
+    }
+    color: hsl(var(--c-question));
+
+    &::after {
+        content: "";
+        flex-shrink: 0;
+        width: 30px;
+        height: 31px;
+        background-image: url("../../assets/images/icon-plus.svg");
+        background-repeat: no-repeat;
+    }
+
+    &:hover,
+    &:focus {
+        cursor: pointer;
+        color: hsl(var(--c-question-hover));
+    }
+}
+
+.answer__wrapper {
+    @include grid;
+
+    grid-template-rows: 0fr;
+    opacity: 0;
+    transition: all var(--transition-duration);
+}
+
+.answer {
+    overflow: hidden;        
+}

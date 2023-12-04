@@ -1,0 +1,38 @@
+@use "sizes" as *;
+
+// Contextual font properties
+$-ff-work-sans: #{"\"Work Sans\", sans-serif"};
+
+// Default font weights
+$font-weight-thin: 100;
+$font-weight-extra-light: 200;
+$font-weight-light: 300;
+$font-weight-normal: 400;
+$font-weight-medium: 500;
+$font-weight-semi-bold: 600;
+$font-weight-bold: 700;
+$font-weight-extra-bold: 800;
+$font-weight-heavy: 900;
+
+// Font map for generating font utility classes
+$utility-font: (
+    "family": (
+        "work-sans": $-ff-work-sans,
+    ),
+);
+
+// Font map for generating custom font properties
+$contextual-font: (
+    "family": (
+        "body": $-ff-work-sans,
+    ),
+    "size": (
+        "body": 1rem,
+        "heading": clamp(3rem, 5svw + 1.5rem, 4.5rem),
+    ),
+    "weight": (
+        "body": $font-weight-normal,
+        "heading": $font-weight-bold,
+        "question": $font-weight-semi-bold,
+    ),
+);

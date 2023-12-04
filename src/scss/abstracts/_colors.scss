@@ -1,0 +1,56 @@
+// Primary colors
+// Naming convention based on position in color wheel
+// 30 - 210: warm - mid - cool
+// 210 - 30: cool - mid - warm
+$c-white-000: 0 0% 100%;
+$c-violet-000: 275 100% 97%;
+$c-magenta-c-300: 292 16% 49%;
+$c-magenta-c-700: 292 42% 14%;
+$c-violet-400: 277 49% 49%;
+
+// Neutral colors
+
+// Color map for generating color utility classes
+$utility-color: (
+  "magenta": (
+    "c-300": $c-magenta-c-300, // c body
+    "c-700": $c-magenta-c-700, // c heading and question
+  ),
+  "violet": (
+    "000": $c-violet-000, // bgc body
+  ),
+  "white": (
+    "000": $c-white-000, // bgc card
+  )
+);
+
+// Color map for generating custom color properties
+$contextual-color: (
+  "color": (
+    "body": $c-magenta-c-300,
+    "heading": $c-magenta-c-700,
+    "question": $c-magenta-c-700,
+    "question-hover": $c-violet-400,
+    "divider": $c-violet-000,
+  ),
+  "background-color": ( 
+    "body": $c-violet-000,
+    "card": $c-white-000,
+  ),
+);
+
+// Theme map for generating theme classes
+$theme-color: (
+  "dark": (
+    "color": (
+    ),
+    "background-color": (
+    ),
+  ),
+  "light": (
+    "color": (
+    ),
+    "background-color": (
+    ),
+  ),
+);
